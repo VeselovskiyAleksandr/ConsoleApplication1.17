@@ -7,24 +7,29 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	int snake[5][5];
-	int i, j;
-	cout << "\n Введите значения элементов массива: ";
-	for(i=0;i<5;i+=2){
-		for (j = 0; j < 5; j++) {
+	int snake[5][5], snakeAuxillary[5][5] ;
+	int i, j, k;
+	cout << "\n Введите значения элементов массива: \n";
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 5; j ++) {
 			cin >> snake[i][j];
-	}
-		cout << "\n\n";
-	}
-	for (i = 1; i < 5; i++) {
-		for (j = 4; j >= 0; j--) {
-			cin >> snake[i][j];
+			snakeAuxillary[i][j]= snake[i][j];
 		}
-		cout << "\n\n";
+	}
+	for (i = 1; i < 5; i += 2) {
+		for (k = 0; k < 5; k++) {
+            j = 4 - k;
+			snakeAuxillary[i][k]= snake[i][j];	
+		}
 	}
 	for (i = 0; i < 5; i++) {
 		for (j = 0; j < 5; j++) {
-			cout << snake[i][j];
+			snake[i][j] = snakeAuxillary[i][j];
+		}
+	}
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 5; j++) {
+			cout << snake[i][j]<<" ";
 		}
 		cout << "\n";
 	}
