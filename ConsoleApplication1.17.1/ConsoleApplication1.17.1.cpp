@@ -16,6 +16,7 @@ int main()
 	bool correct = true;
 	int i, j, countX = 0, countO = 0, countWinXI = 0, countWinOI=0, countWinXIJ = 0, countWinOIJ = 0;
 	int countWinXJ = 0, countWinOJ = 0, countWinXJI = 0, countWinOJI = 0;
+	int counterMove = 0;
 		
 	do {
 cout << "\n Игровое поле: \n";
@@ -31,6 +32,10 @@ cout << "\n Игровое поле: \n";
 		}
 		else if ((countWinOI == 3)||(countWinOJ == 3)||(countWinOIJ == 3)||(countWinOJI == 3)) {
 			cout << "\n Победили нолики!";
+			break;
+		}
+		else if (counterMove == 9) {
+			cout << "\n Ничья.";
 			break;
 		}
 		cout << "\n Укажите номер строки и столбца, выбранной клетки \n";
@@ -49,6 +54,7 @@ cout << "\n Игровое поле: \n";
 				tic_tac_toe[i][j] == ' ';	
 			}
 			else {
+				counterMove++;
 				if (tic_tac_toe[i][j] == 'X') {
 					countX++; countO = 0;
 					if (countX > 1) {
@@ -67,8 +73,8 @@ cout << "\n Игровое поле: \n";
 		  }	
 		if (correct) {
 			countWinXIJ = 0; countWinOIJ = 0; countWinXJI = 0; countWinOJI = 0;
-			countWinXI = 0; countWinOI = 0;  countWinXJ = 0; countWinOJ = 0;
 			for (i = 0; i < 3; i++) {
+				countWinXJ = 0; countWinOJ = 0;
 				for (j = 0; j < 3; j++) {
 					if (tic_tac_toe[i][j] == 'X') {
 						countWinXJ++;	
@@ -95,17 +101,44 @@ cout << "\n Игровое поле: \n";
 				else if ((j ==2-i) && (tic_tac_toe[i][j] == 'O')) {
 					countWinOJI++;
 				}
-	if (tic_tac_toe[i][j] == 'X') {
-					countWinXI++;
-				}
+	
 				else if(tic_tac_toe[i][j] == 'O') {
-					countWinOI++;
+					 countWinOI++;
 			    	}
 		    	} 		
+				if (countWinXJ == 3) {
+					break;
+				}
+				if (countWinOJ == 3) {
+					break;
+				}
+			}		
+			for (j = 0; j < 3; j++) {
+				countWinXI = 0; countWinOI = 0;
+				for (i = 0; i < 3; i++) {
+					if (tic_tac_toe[i][j] == 'X') {
+							countWinXI++;
+						if (countWinXI == 3) {
+							break;
+						}	
+					}
+					else if (tic_tac_toe[i][j] == 'O') {
+						countWinOI++;
+						if (countWinOI == 3) {
+							break;
+						}
+					}
+				}
+				if (countWinXI == 3) {
+					break;
+				}
+				if (countWinOI == 3) {
+					break;
+				}
 			 }
 		  }
 		} while (true);
-	}
+	  }
 
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
