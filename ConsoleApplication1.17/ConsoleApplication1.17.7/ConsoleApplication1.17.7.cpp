@@ -1,54 +1,39 @@
-﻿// ConsoleApplication1.17.6.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//Урок 14. Задача 6. Умножение матрицы на вектор.
+﻿// ConsoleApplication1.17.7.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//Урок 14. Задача 7. Пупырка.
 
 #include <iostream>
 #include <locale.h>
 using namespace std;
+bool initialization_function(bool arrayP[12][12]) {
+	int i, j;
+	for (i = 0; i < 12; i++) {
+		for (j = 0; j < 12; j++) {
+			arrayP[i][j] = true;
+		}
+	}
+	return arrayP;
+}
+char sequentialChange_function(bool arrayP[12][12]) {
+	int i, j;
+	for (i = 0; i < 12; i++) {
+		for (j = 0; j < 12; j++) {
+			if (arrayP[i][j] = true) {
+				arrayP[i][j] = "O";
+		}
+			else {
+				arrayP[i][j] = "X";
+			}
+		}
+	}
+	return arrayP;
+}
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	float arrayM[4][4],	arrayV[1][4];
-	float arrayR[1][4] = { 0,0,0,0 };
-	int i, j, k; 
-	cout << "\n Введите 4-хкомпонентный вектор\n";
-	for (i = 0; i < 1; i++) {
-		for (k = 0; k < 4; k++) {
-			cin >> arrayV[i][k];
-		}
-	}
-	cout << "\n Введите элементы матрицы\n";
-	for (k = 0; k < 4; k++) {
-		for (j = 0; j < 4; j++) {
-			cin >> arrayM[k][j];
-		}
-	}
-	for (i = 0; i < 1; i++) {				
-		for (j = 0; j < 4; j++)  {
-            for (k = 0; k < 4;k++){
-				arrayR[i][j] += arrayV[i][k] * arrayM[k][j];
-			}
-		}
-	}
-	cout << "\n Введённый вектор:\n";
-	for (i = 0; i < 1; i++) {
-		for (k = 0; k < 4; k++) {
-			cout << arrayV[i][k];
-		}	
-	}
-        cout << "\n Введённый массив:\n";
-	for (k = 0; k < 4; k++) {
-		for (j = 0; j < 4; j++) {
-			cout << arrayM[k][j];
-		}
-		cout << "\n";
-	}
-	cout << "\n Произведение вектора на массив:\n";
-	for (i = 0; i < 1; i++) {
-		for (k = 0; k < 4; k++) {
-			cout << arrayR[i][k] << " ";
-		}
-	}
+	bool bubbleWrap[12][12];
+	int i, j;
+	initialization_function(bubbleWrap);
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
