@@ -4,6 +4,23 @@
 #include <iostream>
 #include <locale.h>
 using namespace std;
+
+void sequentialChange_function(bool arrayP[12][12]) {
+	int i, j;
+	cout << "\nТак выглядит плёнка:\n";
+	for (i = 0; i < 12; i++) {
+		for (j = 0; j < 12; j++) {
+			if (arrayP[i][j] == true) {
+				cout << 'O'<<" ";
+			}
+			else {
+				cout << 'X' << " ";
+			}
+		}
+		cout << "\n";
+	}
+}
+
 bool initialization_function(bool arrayP[12][12]) {
 	int i, j;
 	for (i = 0; i < 12; i++) {
@@ -11,29 +28,61 @@ bool initialization_function(bool arrayP[12][12]) {
 			arrayP[i][j] = true;
 		}
 	}
-	return arrayP;
-}
-char sequentialChange_function(bool arrayP[12][12]) {
-	int i, j;
-	for (i = 0; i < 12; i++) {
-		for (j = 0; j < 12; j++) {
-			if (arrayP[i][j] = true) {
-				arrayP[i][j] = "O";
-		}
-			else {
-				arrayP[i][j] = "X";
-			}
-		}
-	}
+	sequentialChange_function(arrayP);
 	return arrayP;
 }
 
+void bubblePopping_function(bool arrayP[12][12]) {
+	int i, j;
+	int k, l, t, d;
+	bool correct = true;
+	while (true) {
+		do {
+			cout << "\n Укажите область, которую необходимо лопнуть:\n";
+			cout << "\nУкажите верхнюю границу слева на право\n";
+			cin >> k >> l;
+			cout << "\nУкажите левую границу сверху вниз\n";
+			cin >> t >> d;
+			if (l<0 || l >= 12 || k>l || d<0 || d >= 12 || t>d) {
+				cout << "\nУкажите правильно область\n";
+				correct = false;
+			}
+			for (i = t; i <= d; i++) {
+				for (j = k; j <= l; j++) {
+					if (arrayP[i][j] == false) {
+						cout << "\n В указанной области имеются лопнувшие пупырки. Измените границы области.\n";
+						correct = false;
+						break;
+					}
+					else if (arrayP[i][j] == true) {
+						correct = true;
+					}
+					if (arrayP[i][j] = false) {
+						break;
+					}
+				}
+			}
+			} while (correct != true);
+			for (i = 0; i < 12; i++) {
+				for (j = 0; j < 12; j++) {
+					if (i >= t && i <= d && j >= k && j <= l) {
+						arrayP[i][j] =false;
+						cout << " pop! ";
+					}
+				}
+			}
+			sequentialChange_function(arrayP);
+	  }	
+}
+
+
+														   
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	bool bubbleWrap[12][12];
-	int i, j;
-	initialization_function(bubbleWrap);
+	initialization_function (bubbleWrap);
+	bubblePopping_function( bubbleWrap);
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
