@@ -38,12 +38,18 @@ cout << "\n Игровое поле: \n";
 			cout << "\n Ничья.";
 			break;
 		}
-		cout << "\n Укажите номер строки и столбца, выбранной клетки \n";
-		cin >> i >> j;
-		if((tic_tac_toe[i][j] == 'X')||(tic_tac_toe[i][j] =='O')) {
-			cout << "\n Данная клетка занята. Укажите правильно клетку."; 
-		}
-		else if ((i < 0) || (i > 2) || (j < 0) || (j > 2)) {
+		do {
+			cout << "\n Укажите номер строки и столбца, выбранной клетки \n";
+			cin >> i >> j;
+			if ((tic_tac_toe[i][j] == 'X') || (tic_tac_toe[i][j] == 'O')) {
+				cout << "\n Данная клетка занята. Укажите правильно клетку.";
+				correct = false;
+			}
+			else {
+				correct = true;
+			}
+		} while (correct!=true);
+		 if ((i < 0) || (i > 2) || (j < 0) || (j > 2)) {
 			cout << "\n Сделайте правильный ход ";		
 		}
 		else {
@@ -51,7 +57,7 @@ cout << "\n Игровое поле: \n";
 			cin >> tic_tac_toe[i][j];
 			if ((tic_tac_toe[i][j] != 'X') && (tic_tac_toe[i][j] != 'O')) {
 				cout << "\n Сделайте правильный ход ";
-				tic_tac_toe[i][j] == ' ';	
+				tic_tac_toe[i][j] = ' ';	
 			}
 			else {
 				counterMove++;
