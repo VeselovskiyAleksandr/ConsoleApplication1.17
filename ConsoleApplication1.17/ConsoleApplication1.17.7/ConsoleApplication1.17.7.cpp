@@ -28,7 +28,7 @@ bool initialization_function(bool arrayP[12][12]) {
 			arrayP[i][j] = true;
 		}
 	}
-	sequentialChange_function(arrayP);
+	//sequentialChange_function(arrayP);
 	return arrayP;
 }
 
@@ -57,9 +57,10 @@ void bubblePopping_function(bool arrayP[12][12]) {
 					else if (arrayP[i][j] == true) {
 						correct = true;
 					}
-					if (arrayP[i][j] = false) {
-						break;
+					
 					}
+                   if (arrayP[i][j] == false) {
+						break;
 				}
 			}
 			} while (correct != true);
@@ -94,6 +95,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	bool bubbleWrap[12][12];
 	initialization_function (bubbleWrap);
+	sequentialChange_function(bubbleWrap);
 	bubblePopping_function( bubbleWrap);
 }
 
