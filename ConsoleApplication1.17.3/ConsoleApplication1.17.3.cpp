@@ -1,5 +1,5 @@
 ﻿// ConsoleApplication1.17.3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//Урок 14. Задача 3.
+//Урок 14. Задача 3. Проход змейкой.
 
 #include <iostream>
 #include <locale.h>
@@ -8,12 +8,12 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	int snake[5][5], snakeAuxillary[5][5] ;
-	int i, j, k;
-	cout << "\n Введите значения элементов массива: \n";
+	int i, j, k, t=0;
 	for (i = 0; i < 5; i++) {
-		for (j = 0; j < 5; j ++) {
-			cin >> snake[i][j];
+		for (j = 0; j < 5; j ++) {		
+			snake[i][j]=t ;
 			snakeAuxillary[i][j]= snake[i][j];
+			t++;
 		}
 	}
 	for (i = 1; i < 5; i += 2) {
@@ -27,6 +27,7 @@ int main()
 			snake[i][j] = snakeAuxillary[i][j];
 		}
 	}
+	cout << "\n Массив змейка:\n\n";
 	for (i = 0; i < 5; i++) {
 		for (j = 0; j < 5; j++) {
 			cout << snake[i][j]<<" ";
