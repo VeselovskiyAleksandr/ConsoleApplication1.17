@@ -28,7 +28,6 @@ bool initialization_function(bool arrayP[12][12]) {
 			arrayP[i][j] = true;
 		}
 	}
-	//sequentialChange_function(arrayP);
 	return arrayP;
 }
 
