@@ -34,7 +34,7 @@ bool initialization_function(bool arrayP[12][12]) {
 
 void bubblePopping_function(bool arrayP[12][12]) {
 	int i, j;
-	int k, l, t, d;
+	int k, l, t, d, countBubble=0;
 	bool correct = true;
 	while (true) {
 		do {
@@ -68,8 +68,20 @@ void bubblePopping_function(bool arrayP[12][12]) {
 					if (i >= t && i <= d && j >= k && j <= l) {
 						arrayP[i][j] =false;
 						cout << " pop! ";
+						countBubble++;
+						if (countBubble == 144) {
+							break;
+						}
 					}
+					
 				}
+            if (countBubble == 144) {
+						break;
+					}
+			}
+			if (countBubble == 144) {
+				cout << "\n\nВсе пупырки лопнуты!\n";
+				break;
 			}
 			sequentialChange_function(arrayP);
 	  }	
