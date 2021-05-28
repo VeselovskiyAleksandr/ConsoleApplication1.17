@@ -5,30 +5,50 @@
 #include <locale.h>
 using namespace std;
 
+bool equalityCheck_function(int arrayP[4][4], int arrayQ[4][4]) {
+	int i, j;
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < 4; j++) {
+			if (arrayP[i][j] != arrayQ[i][j]) {
+				cout << "\n Матрицы не равны. ";
+				return false;
+			}
+			else if ((i == 3) && (j == 3)) {
+				cout << "\n Матрицы равны. ";
+				return true;
+			}
+		}
+		
+	}
+}
+
+
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	int arrayA[4][4], arrayB[4][4];
 	int i, j;
-	cout << "\n Введите матрицу А "<<"   "<<"Введите матрицу В \n";
+	cout << "\n Введите матрицу А " << "   " << "Введите матрицу В \n";
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++) {
 			cout << "\n ";
 			cin >> arrayA[i][j];
 			cout << "                     ";
 			cin >> arrayB[i][j];
-			if (arrayA[i][j] != arrayB[i][j]) {
-					cout << "\n Матрицы не равны. ";
-					break;
-		  }
-			else if ((i == 3) && (j == 3)) {
-					cout << "\n Матрицы равны. ";
-				}
-		  }
-		if (arrayA[i][j] != arrayB[i][j]) {
-			break;
+			//		if (arrayA[i][j] != arrayB[i][j]) {
+				//			cout << "\n Матрицы не равны. ";
+					//		break;
+				//  }
+				//	else if ((i == 3) && (j == 3)) {
+						//	cout << "\n Матрицы равны. ";
+					//	}
+				  //}
+				//if (arrayA[i][j] != arrayB[i][j]) {
+					//break;
+				//}
 		}
 	}
+	equalityCheck_function(arrayA, arrayB);
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
