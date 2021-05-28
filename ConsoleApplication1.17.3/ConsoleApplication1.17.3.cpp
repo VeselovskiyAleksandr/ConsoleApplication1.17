@@ -7,25 +7,22 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	int snake[5][5], snakeAuxillary[5][5] ;
-	int i, j, k, t=0;
-	for (i = 0; i < 5; i++) {
+	int snake[5][5];
+	int i, j, t=0;
+	for (i = 0; i < 5; i+=2) {
 		for (j = 0; j < 5; j ++) {		
 			snake[i][j]=t ;
-			snakeAuxillary[i][j]= snake[i][j];
 			t++;
 		}
+		t += 5;
 	}
-	for (i = 1; i < 5; i += 2) {
-		for (k = 0; k < 5; k++) {
-            j = 4 - k;
-			snakeAuxillary[i][k]= snake[i][j];	
+	t -= 11;
+	for (i = 3; i >=0; i -= 2) {
+		for (j = 0;j<5;j++) {
+			snake[i][j] = t;
+			t--;
 		}
-	}
-	for (i = 0; i < 5; i++) {
-		for (j = 0; j < 5; j++) {
-			snake[i][j] = snakeAuxillary[i][j];
-		}
+		t -= 5;
 	}
 	cout << "\n Массив змейка:\n\n";
 	for (i = 0; i < 5; i++) {
