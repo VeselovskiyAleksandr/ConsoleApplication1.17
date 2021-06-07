@@ -75,7 +75,7 @@ void bubblePopping_function(bool arrayP[12][12]) {
 					}
 					
 				}
-            if (countBubble == 144) {
+           if (countBubble == 144) {
 						break;
 					}
 			}
@@ -83,6 +83,7 @@ void bubblePopping_function(bool arrayP[12][12]) {
 				cout << "\n\nВсе пупырки лопнуты!\n";
 				break;
 			}
+		
 			sequentialChange_function(arrayP);
 	  }	
 }
@@ -96,6 +97,7 @@ int main()
 	initialization_function (bubbleWrap);
 	sequentialChange_function(bubbleWrap);
 	bubblePopping_function( bubbleWrap);
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
