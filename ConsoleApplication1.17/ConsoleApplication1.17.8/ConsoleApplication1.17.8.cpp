@@ -9,12 +9,23 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	int landscape[5][5][10];
-	int i, j, k;
-	cout << "\nВведите элементы массива\n ";
+	int i, j, k, h=0;
+	cout << "\nВведите высоту блоков\n ";
 	for (i = 0; i < 5; i++) {
 		for (j = 0; j < 5; j++) {
+			do {
+				cin >> h;
+				if (h < 0 || h>9) {
+					cout << "\nУкажите правильно высоту.";
+				}
+			} while (h < 0 || h>9);
 			for (k = 0; k < 10; k++) {
-				cin>> landscape[i][j][k];
+				if (k <= h) {
+					landscape[i][j][k] = 1;
+				}
+				else {
+					landscape[i][j][k] = 0;
+				}
 			}
 		}
 	}
