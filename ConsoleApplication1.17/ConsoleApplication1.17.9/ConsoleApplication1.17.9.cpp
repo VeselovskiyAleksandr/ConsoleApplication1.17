@@ -6,7 +6,7 @@
 #include <string>
 using namespace std;
 
-char inicialization_function(char arrayS[10][10]) {
+char inicialization_function(char arrayS[][10]) {
 	int i, j;
 	for (i = 0; i < 10; i++) {
 		for (j = 0; j < 10; j++) {
@@ -43,7 +43,7 @@ bool correctCoordinate_function(string s, int len) {
 	return correct;
 }
 
-bool inputCorrect_function(string s, char arrayS[10][10]) {
+bool inputCorrect_function(string s, char arrayS[][10]) {
 	int i, j, m, p, n, q;
 	bool correct = true;
 	m = (int)s[0]-'0'; p = (int)s[2]-'0'; n = (int)s[1]-'0'; q = (int)s[3]-'0';
@@ -67,7 +67,7 @@ bool inputCorrect_function(string s, char arrayS[10][10]) {
       return correct;
 }
 
-char inputShipPlacement_function(int len, char arrayS[10][10]) {
+char inputShipPlacement_function(int len, char arrayS[][10]) {
 	int  countShip = 0, i, j, m, p, n, q;
 	string str;
 	
@@ -97,7 +97,7 @@ char inputShipPlacement_function(int len, char arrayS[10][10]) {
 	return  arrayS[10][10];
 }
 
-char shipPlacement_function(char arrayS[10][10]){
+char shipPlacement_function(char arrayS[][10]){
 	int i, j, len, countShip=0;
 	string str;
     cout << "\n Укажите координаты катеров и тральщиков \n";
@@ -115,7 +115,7 @@ char shipPlacement_function(char arrayS[10][10]){
 		return arrayS[10][10];
 }
 
-char shipLayOut_function(char arrayPl[10][10], char arrayIg[10][10]) {
+char shipLayOut_function(char arrayPl[][10], char arrayIg[][10]) {
 	int i, j;
 	for (i = 0; i < 10; i++) {
 		cout << "     ";
@@ -144,8 +144,8 @@ bool correctShot_function(string s1, string s2) {
 }
 
 
-void battleMap_function(char seaBattleMapOne[10][10], char seaBattleMapTwo[10][10],
-	char intendedGoalsMapOne[10][10], char intendedGoalsMapTwo[10][10]) {
+void battleMap_function(char seaBattleMapOne[][10], char seaBattleMapTwo[][10],
+	char intendedGoalsMapOne[][10], char intendedGoalsMapTwo[][10]) {
 	int i, j, k, t, d, counterHitOne = 0, counterHitTwo = 0;
 	bool correct = true;
 	string stri, strj;
