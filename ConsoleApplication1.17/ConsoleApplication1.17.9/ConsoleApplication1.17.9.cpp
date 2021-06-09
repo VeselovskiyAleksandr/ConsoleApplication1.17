@@ -6,20 +6,17 @@
 #include <string>
 using namespace std;
 
-char inicialization_function(char arrayS[][10]) {
-	int i, j;
-	for (i = 0; i < 10; i++) {
-		for (j = 0; j < 10; j++) {
+void inicialization_function(char arrayS[][10]) {
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
 			arrayS[i][j] = '~';	
 		}
-	}
-	return arrayS[10][10];
+	}	
 }
 
 bool correctCoordinate_function(string s, int len) {
-	int i;
 	bool correct = true, number=true;
-	for (i = 0; i < 4; i++) {
+	for (int i = 0; i < 4; i++) {
 		if (s[i] - '0' < 0 || s[i] - '0' > 9) {
 			number = false;
 			break;
@@ -44,11 +41,11 @@ bool correctCoordinate_function(string s, int len) {
 }
 
 bool inputCorrect_function(string s, char arrayS[][10]) {
-	int i, j, m, p, n, q;
+	int  m, p, n, q;//переменные принимают индексы элементов массива arrayS.
 	bool correct = true;
-	m = (int)s[0]-'0'; p = (int)s[2]-'0'; n = (int)s[1]-'0'; q = (int)s[3]-'0';
-	for (i = m; i < p + 1; i++) {
-		for (j = n; j < q + 1; j++) {
+	 m = (int)s[0]-'0';  p = (int)s[2]-'0';  n = (int)s[1]-'0'; q = (int)s[3]-'0';
+	for (int i = m; i < p + 1; i++) {
+		for (int j = n; j < q + 1; j++) {
 			if ((arrayS[i][j] != '~')||((q<9)&&((arrayS[i + 1][j + 1] == '#') || (arrayS[i - 1][j + 1] == '#')
 				||( arrayS[i][q + 1] == '#')))||(arrayS[m+1][n]=='#') || (arrayS[m - 1][n] == '#')||
 				((n>0)&&((arrayS[m - 1][n-1] == '#')|| (arrayS[m + 1][n-1] == '#') || (arrayS[m][n - 1] == '#'))))
@@ -68,9 +65,9 @@ bool inputCorrect_function(string s, char arrayS[][10]) {
 }
 
 char inputShipPlacement_function(int len, char arrayS[][10]) {
-	int  countShip = 0, i, j, m, p, n, q;
-	string str;
-	
+	int  countShip = 0;
+	int  m, p, n, q;//переменные принимают индексы элементов массива arrayS.
+	string str;	
 	while (countShip < 5 - len) {
 		do
 		{
@@ -80,25 +77,25 @@ char inputShipPlacement_function(int len, char arrayS[][10]) {
 			}
 		} while((str.length()!= 4)||(inputCorrect_function(str, arrayS) != true) ||
 			(correctCoordinate_function(str, len) != true));
-		m = (int)str[0]-'0'; p = (int)str[2]-'0'; n = (int)str[1]-'0'; q = (int)str[3]-'0';
-		for (i = m; i < p + 1; i++) {
-			for (j = n; j < q + 1; j++) {
+		 m = (int)str[0]-'0';  p = (int)str[2]-'0';  n = (int)str[1]-'0'; q = (int)str[3]-'0';
+		for (int i = m; i < p + 1; i++) {
+			for (int j = n; j < q + 1; j++) {
 				arrayS[i][j] = '#';			
 			}
 		}
              countShip++;
-		for (i = 0; i < 10; i++) {
-			for (j = 0; j < 10; j++) {
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
 				cout << arrayS[i][j] << " ";
 			}
 			cout << "\n";
 		}
 	}
-	return  arrayS[10][10];
+	return  arrayS[9][9];
 }
 
 char shipPlacement_function(char arrayS[][10]){
-	int i, j, len, countShip=0;
+	int  len;
 	string str;
     cout << "\n Укажите координаты катеров и тральщиков \n";
      len = 1;
@@ -112,27 +109,26 @@ char shipPlacement_function(char arrayS[][10]){
 		cout << "\n Укажите координаты линкора ";
 		len = 4;
 		inputShipPlacement_function(len, arrayS);
-		return arrayS[10][10];
+		return arrayS[9][9];
 }
 
-char shipLayOut_function(char arrayPl[][10], char arrayIg[][10]) {
-	int i, j;
-	for (i = 0; i < 10; i++) {
+
+void shipLayOut_function(char arrayPl[][10], char arrayIg[][10]) {
+	for (int i = 0; i < 10; i++) {
 		cout << "     ";
-		for (j = 0; j < 10; j++) {
+		for (int j = 0; j < 10; j++) {
 			cout << arrayPl[i][j] << " ";
 		}
 		cout << "               ";
-		for (j = 0; j < 10; j++) {
+		for (int j = 0; j < 10; j++) {
 			cout << arrayIg[i][j] << " ";
 		}
 		cout << "\n";
 	}
-	return arrayPl[10][10]; return arrayIg[10][10];
 }
 
 bool correctShot_function(string s1, string s2) {
-	int t, d;
+	int t, d;//переменные принимают индексы элементов массивов S1 и S2.
 	t = s1[0] - '0'; d = s2[0] - '0';
 	if (s1.length() > 1 || s2.length() > 1 || t < 0 || t>9 || d < 0 || d>9) {
 		cout << "\nУкажите правильно координаты.";
@@ -146,7 +142,8 @@ bool correctShot_function(string s1, string s2) {
 
 void battleMap_function(char seaBattleMapOne[][10], char seaBattleMapTwo[][10],
 	char intendedGoalsMapOne[][10], char intendedGoalsMapTwo[][10]) {
-	int i, j, k, t, d, counterHitOne = 0, counterHitTwo = 0;
+	int  t, d;//переменные принимают индексы элементов массивов stri и strj.
+	int counterHitOne = 0, counterHitTwo = 0;
 	bool correct = true;
 	string stri, strj;
 	cout << "\n              К  А  Р  Т  А           С  Р  А  Ж  Е  Н  И  Я\n";
